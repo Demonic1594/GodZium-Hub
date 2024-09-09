@@ -1,8 +1,8 @@
-local NoHyper = loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/NoHyperLib/main/source.dll'))()
+local NoHyper = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib'))()
 
 NoHyper.set_theme('nohyper') -- [[nohyper , bedol , neverlose, green]]
 
-local Window = NoHyper.new('Hello, NoHyper',"rbxassetid://16763260622",'Welcome back!') -- My Logo you can replace it
+local Window = NoHyper.new('Hello, NoHyper',"rbxassetid://16763260622",'Welcome back!')
 
 Window:AddYoutube('https://www.youtube.com/your-youtube-channel')
 Window:AddWebsite('https://example.com/your-website')
