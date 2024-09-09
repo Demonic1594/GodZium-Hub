@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/Scripts/FakeLag/FakeLag2"))()
