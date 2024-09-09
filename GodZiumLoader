@@ -1,6 +1,6 @@
 local NoHyper = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib'))()
 
-NoHyper.set_theme('nohyper') -- [[nohyper , bedol , neverlose, green]]
+NoHyper.set_theme('GodZium')
 
 local Window = NoHyper.new('Hello, NoHyper',"rbxassetid://16763260622",'Welcome back!')
 
