@@ -1,12 +1,12 @@
 local NoHyper = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib'))()
 
-NoHyper.set_theme('GodZium')
+NoHyper.set_theme('nohyper')
 
-local Window = NoHyper.new('Hello, NoHyper',"rbxassetid://16763260622",'Welcome back!')
+local Window = NoHyper.new('Hello, GodZium',"rbxassetid://16763260622",'Welcome back!')
 
-Window:AddYoutube('https://www.youtube.com/your-youtube-channel')
-Window:AddWebsite('https://example.com/your-website')
-Window:AddDiscord('https://discord.gg/your-discord')
+Window:AddYoutube('https://youtube.com/@demonic7463?si=rQJHe6hLxyH-Zudk')
+Window:AddWebsite('https://google.com/')
+Window:AddDiscord('https://r.mtdv.me/GodZium')
 
 local General = Window:NewTab('General','earth') -- [[Icon: ads list folder earth locked home positon notify close color]]
 local Setting = Window:NewTab('Setting','list')
