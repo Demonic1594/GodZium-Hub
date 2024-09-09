@@ -1,6 +1,6 @@
    repeat wait() until game:IsLoaded()
 
-   local GodziumLib = loadstring(game:HttpGet("https://pastebin.com/raw/EVkuBWZ7"))()
+   local GodziumLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodziumLib"))()
 
    local win = GodziumLib:New({
      Name = "Godzium",
