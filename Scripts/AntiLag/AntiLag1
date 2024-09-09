@@ -21,5 +21,4 @@ _G.Settings = {
     ["Low Rendering"] = true, -- Lower Rendering
     ["Low Quality Parts"] = true -- Lower quality parts
 }
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/Scripts/AntiLag/Antilag2"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/Scripts/AntiLag/AntiLag2"))()
