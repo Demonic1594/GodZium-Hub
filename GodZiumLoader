@@ -13,9 +13,6 @@ Window:AddDiscord('https://r.mtdv.me/GodZium')
 local Main = Window:NewTab('Main','earth')
 local Info = Main:NewSection('About GodZium Hub','locked','left')
 local QuickExploits = Main:NewSection('Quick Exploits','positon','right') 
-local General = Window:NewTab('General','earth')
-local Example = General:NewSection('Example','positon','left')
-local RightSection = General:NewSection('Section','ads','right')
 
 
 Info:AddButton('GodZium Hub was made for personal uses.', function()
@@ -78,45 +75,117 @@ QuickExploits:AddButton('Shaders', function()
 end)
 
 
-QuickExploits:AddButton('Antilag', function()
+local FPSBoosterExecuted = false
+local FPSBoosterUrl = "https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/Scripts/AntiLag/AntiLag1"
+local FPSBoosterHash = nil
+
+local function calculateHash(code)
+    local hash = 0
+    for i = 1, #code do
+        hash = (hash * 31 + code:byte(i)) % 0xFFFFFFFF
+    end
+    return hash
+end
+
+QuickExploits:AddButton('FPS Booster', function()
+    if FPSBoosterExecuted then
+        print("[GZ] : FPS Booster has already been executed.")
+        local success, code = pcall(function() return game:HttpGet(FPSBoosterUrl) end)
+        if not success or not code or #code == 0 then
+            print("[GZ] : The FPS Booster script is no longer available. Resetting execution status.")
+            FPSBoosterExecuted = false
+            FPSBoosterHash = nil
+            return
+        end
+        local newHash = calculateHash(code)
+        if newHash ~= FPSBoosterHash then
+            print("[GZ] : The FPS Booster script has been updated. Resetting execution status.")
+            FPSBoosterExecuted = false
+            FPSBoosterHash = nil
+            return
+        end
+        return
+    end
+    local success, code = pcall(function() return game:HttpGet(FPSBoosterUrl) end)
+    if not success then
+        print("[GZ] : Failed to fetch FPS Booster script.")
+        return
+    end
+    if not code or #code == 0 then
+        print("[GZ] : The fetched code is empty or invalid.")
+        return
+    end
+    local func, loadError = loadstring(code)
+    if not func then
+        print("[GZ] : Failed to load FPS Booster script. Error:", loadError)
+        return
+    end
+    local execSuccess, execError = pcall(func)
+    if execSuccess then
+        print("[GZ] : Successfully loaded FPS Booster.")
+        FPSBoosterExecuted = true
+        FPSBoosterHash = calculateHash(code)
+    else
+        print("[GZ] : Failed to execute FPS Booster script. Error:", execError)
+    end
 end)
 
 
+local FakeLagExecuted = false
+local FakeLagUrl = "https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/Scripts/FakeLag/FakeLag1"
+local FakeLagHash = nil
+
+local function calculateHash(code)
+    local hash = 0
+    for i = 1, #code do
+        hash = (hash * 31 + code:byte(i)) % 0xFFFFFFFF
+    end
+    return hash
+end
+
 QuickExploits:AddButton('Fake Lag', function()
+    if FakeLagExecuted then
+        print("[GZ] : Fake Lag has already been executed.")
+        local success, code = pcall(function() return game:HttpGet(FakeLagUrl) end)
+        if not success or not code or #code == 0 then
+            print("[GZ] : The Fake Lag script is no longer available. Resetting execution status.")
+            FakeLagExecuted = false
+            FakeLagHash = nil
+            return
+        end
+        local newHash = calculateHash(code)
+        if newHash ~= FakeLagHash then
+            print("[GZ] : The Fake Lag script has been updated. Resetting execution status.")
+            FakeLagExecuted = false
+            FakeLagHash = nil
+            return
+        end
+        return
+    end
+    local success, code = pcall(function() return game:HttpGet(FakeLagUrl) end)
+    if not success then
+        print("[GZ] : Failed to fetch Fake Lag script.")
+        return
+    end
+    if not code or #code == 0 then
+        print("[GZ] : The fetched code is empty or invalid.")
+        return
+    end
+    local func, loadError = loadstring(code)
+    if not func then
+        print("[GZ] : Failed to load Fake Lag script. Error:", loadError)
+        return
+    end
+    local execSuccess, execError = pcall(func)
+    if execSuccess then
+        print("[GZ] : Successfully loaded Fake Lag.")
+        FakeLagExecuted = true
+        FakeLagHash = calculateHash(code)
+    else
+        print("[GZ] : Failed to execute Fake Lag script. Error:", execError)
+    end
 end)
 
 
 QuickExploits:AddButton('Infinite Yield', function()
-end)
-
-
-Example:AddToggle('Toggle', false, function(value)
-	print('click!',value)
-end)
-
-
-Example:AddKeybind('Keybind', Enum.KeyCode.E, function(value)
-	print('bind!',value)
-end)
-
-
-Example:AddSlider('Keybind', {Min = 0,Max = 100,Default = 50,ValueT = '%'}, function(value)
-	print('number is ',value)
-end)
-
-Example:AddDropdown('Dropdown', {1,2,3,4,5,6,7,8,9,10},5, function(value)
-	print('select ',value)
-end)
-
-
-RightSection:AddToggle('Aimbot', false, function(...)
-	print('Boolen: ',...)
-end)
-
-RightSection:AddToggle('Esp', false, function(...)
-	print('Boolen: ',...)
-end)
-
-RightSection:AddToggle('XRay', false, function(...)
-	print('Boolen: ',...)
 end)
