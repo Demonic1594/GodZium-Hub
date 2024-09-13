@@ -1,8 +1,8 @@
-local NoHyper = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib'))()
+local GodZium = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib'))()
 
 NoHyper.set_theme('nohyper')
 
-local Window = NoHyper.new('Hello, GodZium Hub',"rbxassetid://16763260622",'Welcome back!')
+local Window = GodZium.new('Hello, GodZium Hub',"rbxassetid://16763260622",'Welcome back!')
 
 Window:AddYoutube('https://youtube.com/@demonic7463?si=rQJHe6hLxyH-Zudk')
 Window:AddWebsite('https://google.com/')
