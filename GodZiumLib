@@ -40,7 +40,7 @@ local NoHyper = {
 }
 
 function NoHyper.set_theme(name:string) -- [[ YOU CAN CUSTOM THEME ]]
-	if name:lower() == 'nohyper' then
+	if name:lower() == 'godzium' then
 		NoHyper.Theme.BACKGROUND = Color3.fromRGB(34, 37, 42)
 		NoHyper.Theme.SECTION = Color3.fromRGB(39, 42, 48)
 		NoHyper.Theme.MAIN = Color3.fromRGB(189, 48, 37)
