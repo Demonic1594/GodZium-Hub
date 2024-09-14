@@ -1,4 +1,4 @@
-local GodZium = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib'))()
+local GodZium = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib1'))()
 GodZium.set_theme('godzium')
 local Window = GodZium.new('Godzium', "rbxassetid://16763260622", 'Test script for sharkbite 2 >Boats<. Make sure to spam click the button for it to work.')
 
