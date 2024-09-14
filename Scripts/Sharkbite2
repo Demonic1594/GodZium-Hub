@@ -7,24 +7,23 @@ local BoatSection = BoatTab:NewSection('Boats', 'ads', 'left')
 
 local selectedBoat = 'Wildfire'
 
-BoatSection:AddButton('Confirm Boat Selection', function()
+local function selectBoat()
     if selectedBoat then
-        pcall(function()
-             game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
-            
-            spawn(function()
-                for i = 1, 4 do
-                    wait(1)
-                    pcall(function()
-                        game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
-                    end)
-                end
-            end)
+        local success, err = pcall(function()
+            for i = 1, 4 do
+                game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
+                wait(1)
+            end
         end)
+        if not success then
+            print("Error: ", err)
+        end
     else
         print('No boat selected!')
     end
-end)
+end
+
+BoatSection:AddButton('Confirm Boat Selection', selectBoat)
 
 BoatSection:AddDropdown('Select Boat (Part 1)', {
     'DuckyBoatBeta', 'DuckyBoat', 'BlueCanopyMotorboat', 'BlueWoodenMotorboat', 'UnicornBoat',
@@ -32,7 +31,7 @@ BoatSection:AddDropdown('Select Boat (Part 1)', {
 }, 'Choose Boat', function(Value)
     selectedBoat = Value
     if Value then
-         BoatSection:SetDropdown('Select Boat (Part 2)', nil)
+        BoatSection:SetDropdown('Select Boat (Part 2)', nil)
         BoatSection:SetDropdown('Select Boat (Part 3)', nil)
     end
 end)
@@ -43,7 +42,7 @@ BoatSection:AddDropdown('Select Boat (Part 2)', {
 }, 'Choose Boat', function(Value)
     selectedBoat = Value
     if Value then
-         BoatSection:SetDropdown('Select Boat (Part 1)', nil)
+        BoatSection:SetDropdown('Select Boat (Part 1)', nil)
         BoatSection:SetDropdown('Select Boat (Part 3)', nil)
     end
 end)
@@ -54,23 +53,9 @@ BoatSection:AddDropdown('Select Boat (Part 3)', {
 }, 'Choose Boat', function(Value)
     selectedBoat = Value
     if Value then
-         BoatSection:SetDropdown('Select Boat (Part 1)', nil)
+        BoatSection:SetDropdown('Select Boat (Part 1)', nil)
         BoatSection:SetDropdown('Select Boat (Part 2)', nil)
     end
 end)
 
-local function selectBoat()
-    spawn(function()
-        pcall(function()
-            game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
-            
-            for i = 1, 4 do
-                wait(1)
-                pcall(function()
-                    game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
-                end)
-            end
-        end)
-    end)
-end
 selectBoat()
