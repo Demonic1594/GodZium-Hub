@@ -26,7 +26,7 @@ local function ToDefault(val,def)
 	return val or def
 end
 
-local NoHyper = {
+local GodZium = {
 	Theme = {
 		BACKGROUND = Color3.fromRGB(34, 37, 42),
 		SECTION = Color3.fromRGB(39, 42, 48),
@@ -39,42 +39,42 @@ local NoHyper = {
 	SectionWidth = 0.95
 }
 
-function NoHyper.set_theme(name:string) -- [[ YOU CAN CUSTOM THEME ]]
+function GodZium.set_theme(name:string)
 	if name:lower() == 'godzium' then
-		NoHyper.Theme.BACKGROUND = Color3.fromRGB(34, 37, 42)
-		NoHyper.Theme.SECTION = Color3.fromRGB(39, 42, 48)
-		NoHyper.Theme.MAIN = Color3.fromRGB(189, 48, 37)
-		NoHyper.Theme.STROKE = Color3.fromRGB(27, 30, 34)
-		NoHyper.Theme.TOUCH = Color3.fromRGB(103, 26, 20)
-		NoHyper.Theme.SYSTEM = Color3.fromRGB(225, 57, 44)
+		GodZium.Theme.BACKGROUND = Color3.fromRGB(34, 37, 42)
+		GodZium.Theme.SECTION = Color3.fromRGB(39, 42, 48)
+		GodZium.Theme.MAIN = Color3.fromRGB(189, 48, 37)
+		GodZium.Theme.STROKE = Color3.fromRGB(27, 30, 34)
+		GodZium.Theme.TOUCH = Color3.fromRGB(103, 26, 20)
+		GodZium.Theme.SYSTEM = Color3.fromRGB(225, 57, 44)
 	elseif name:lower() == 'bedol' then -- Theme for me!!!!!
-		NoHyper.Theme.BACKGROUND = Color3.fromRGB(34, 37, 42)
-		NoHyper.Theme.SECTION = Color3.fromRGB(39, 42, 48)
-		NoHyper.Theme.MAIN = Color3.fromRGB(189, 0, 0)
-		NoHyper.Theme.STROKE = Color3.fromRGB(27, 30, 34)
-		NoHyper.Theme.TOUCH = Color3.fromRGB(103, 0, 0)
-		NoHyper.Theme.SYSTEM = Color3.fromRGB(225, 0, 0)
+		GodZium.Theme.BACKGROUND = Color3.fromRGB(34, 37, 42)
+		GodZium.Theme.SECTION = Color3.fromRGB(39, 42, 48)
+		GodZium.Theme.MAIN = Color3.fromRGB(189, 0, 0)
+		GodZium.Theme.STROKE = Color3.fromRGB(27, 30, 34)
+		GodZium.Theme.TOUCH = Color3.fromRGB(103, 0, 0)
+		GodZium.Theme.SYSTEM = Color3.fromRGB(225, 0, 0)
 	elseif name:lower() == 'neverlose' then
-		NoHyper.Theme.BACKGROUND = Color3.fromRGB(3, 15, 32)
-		NoHyper.Theme.SECTION = Color3.fromRGB(4, 19, 43)
-		NoHyper.Theme.MAIN = Color3.fromRGB(69, 185, 217)
-		NoHyper.Theme.STROKE = Color3.fromRGB(12, 55, 111)
-		NoHyper.Theme.TOUCH = Color3.fromRGB(69, 181, 248)
-		NoHyper.Theme.SYSTEM = Color3.fromRGB(74, 202, 234)
+		GodZium.Theme.BACKGROUND = Color3.fromRGB(3, 15, 32)
+		GodZium.Theme.SECTION = Color3.fromRGB(4, 19, 43)
+		GodZium.Theme.MAIN = Color3.fromRGB(69, 185, 217)
+		GodZium.Theme.STROKE = Color3.fromRGB(12, 55, 111)
+		GodZium.Theme.TOUCH = Color3.fromRGB(69, 181, 248)
+		GodZium.Theme.SYSTEM = Color3.fromRGB(74, 202, 234)
 	elseif name:lower() == 'green' then
-		NoHyper.Theme.BACKGROUND = Color3.fromRGB(3, 24, 19)
-		NoHyper.Theme.SECTION = Color3.fromRGB(4, 29, 23)
-		NoHyper.Theme.MAIN = Color3.fromRGB(75, 246, 138)
-		NoHyper.Theme.STROKE = Color3.fromRGB(15, 35, 31)
-		NoHyper.Theme.TOUCH = Color3.fromRGB(57, 186, 104)
-		NoHyper.Theme.SYSTEM = Color3.fromRGB(75, 246, 138)
+		GodZium.Theme.BACKGROUND = Color3.fromRGB(3, 24, 19)
+		GodZium.Theme.SECTION = Color3.fromRGB(4, 29, 23)
+		GodZium.Theme.MAIN = Color3.fromRGB(75, 246, 138)
+		GodZium.Theme.STROKE = Color3.fromRGB(15, 35, 31)
+		GodZium.Theme.TOUCH = Color3.fromRGB(57, 186, 104)
+		GodZium.Theme.SYSTEM = Color3.fromRGB(75, 246, 138)
 	elseif name:lower() == 'tokyo' then
-		NoHyper.Theme.BACKGROUND = Color3.fromRGB(26, 27, 38)
-		NoHyper.Theme.SECTION = Color3.fromRGB(22, 22, 32)
-		NoHyper.Theme.MAIN = Color3.fromRGB(181, 186, 209)
-		NoHyper.Theme.STROKE = Color3.fromRGB(68, 72, 89)
-		NoHyper.Theme.TOUCH = Color3.fromRGB(36, 36, 51)
-		NoHyper.Theme.SYSTEM = Color3.fromRGB(189, 194, 218)
+		GodZium.Theme.BACKGROUND = Color3.fromRGB(26, 27, 38)
+		GodZium.Theme.SECTION = Color3.fromRGB(22, 22, 32)
+		GodZium.Theme.MAIN = Color3.fromRGB(181, 186, 209)
+		GodZium.Theme.STROKE = Color3.fromRGB(68, 72, 89)
+		GodZium.Theme.TOUCH = Color3.fromRGB(36, 36, 51)
+		GodZium.Theme.SYSTEM = Color3.fromRGB(189, 194, 218)
 	end
 end
 
@@ -229,18 +229,18 @@ local function SetImage(name:string,image:ImageLabel)
 end
 
 
-function NoHyper.new(WindowName,WindowLogo,WindowDescription)
+function GodZium.new(WindowName,WindowLogo,WindowDescription)
 	local HyperWindow = {
 		Tabs = {},
 		Size = UDim2.new(0.230000004, 350, 0.25, 250),
 		Toggle = Enum.KeyCode.LeftControl
 	}
 
-	WindowName = ToDefault(WindowName,'Hello, NoHyper')
+	WindowName = ToDefault(WindowName,'Hello, GodZium')
 	WindowLogo = ToDefault(WindowLogo,'http://www.roblox.com/asset/?id=16530565354') -- sorry it's Cry Of Fear Logo
 	WindowDescription = ToDefault(WindowDescription,'Welcome back!')
 
-	local NoHyperUI = Instance.new("ScreenGui")
+	local GodZiumUI = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
 	local Frame = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
@@ -264,26 +264,26 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 	local UICorner_2 = Instance.new("UICorner")
 	local UICorner_3 = Instance.new("UICorner")
 
-	NoHyperUI:GetPropertyChangedSignal('Enabled'):Connect(function()
-		if not NoHyperUI.Enabled then
-			NoHyperUI.Enabled = true
+	GodZiumUI:GetPropertyChangedSignal('Enabled'):Connect(function()
+		if not GodZiumUI.Enabled then
+			GodZiumUI.Enabled = true
 		end
 	end)
 
 
-	HyperWindow.ScreenSource = NoHyperUI
+	HyperWindow.ScreenSource = GodZiumUI
 
-	NoHyperUI.Name = tostring("ui.protect.")..tostring(math.random(1,100))..tostring(Random.new():NextNumber(0.1,0.9))..tostring(Random.new():NextNumber(0.1,0.9))..tostring(Random.new():NextNumber(0.1,0.9))
-	NoHyperUI.Parent = Core
-	NoHyperUI.ResetOnSpawn = false
-	NoHyperUI.IgnoreGuiInset = true
-	NoHyperUI.ZIndexBehavior = Enum.ZIndexBehavior.Global
-	ProtectGui(NoHyperUI)
+	GodZiumUI.Name = tostring("ui.protect.")..tostring(math.random(1,100))..tostring(Random.new():NextNumber(0.1,0.9))..tostring(Random.new():NextNumber(0.1,0.9))..tostring(Random.new():NextNumber(0.1,0.9))
+	GodZiumUI.Parent = Core
+	GodZiumUI.ResetOnSpawn = false
+	GodZiumUI.IgnoreGuiInset = true
+	GodZiumUI.ZIndexBehavior = Enum.ZIndexBehavior.Global
+	ProtectGui(GodZiumUI)
 
 	MainFrame.Name = "MainFrame"
-	MainFrame.Parent = NoHyperUI
+	MainFrame.Parent = GodZiumUI
 	MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-	MainFrame.BackgroundColor3 = NoHyper.Theme.BACKGROUND
+	MainFrame.BackgroundColor3 = GodZium.Theme.BACKGROUND
 	MainFrame.BackgroundTransparency = 1.000
 	MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	MainFrame.BorderSizePixel = 0
@@ -293,7 +293,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 	MainFrame.Active = true
 
 	Frame.Parent = MainFrame
-	Frame.BackgroundColor3 = NoHyper.Theme.BACKGROUND
+	Frame.BackgroundColor3 = GodZium.Theme.BACKGROUND
 	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame.BorderSizePixel = 0
 	Frame.Size = UDim2.new(1, 0, 1, 0)
@@ -588,7 +588,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 
 		TabButton.Name = TabName or "TabButton"
 		TabButton.Parent = ScrollingFrame
-		TabButton.BackgroundColor3 = NoHyper.Theme.MAIN
+		TabButton.BackgroundColor3 = GodZium.Theme.MAIN
 		TabButton.BackgroundTransparency = 1.000
 		TabButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		TabButton.BorderSizePixel = 0
@@ -779,10 +779,10 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 
 			Section.Name = "Section"
 			Section.Parent = Position
-			Section.BackgroundColor3 = NoHyper.Theme.SECTION
+			Section.BackgroundColor3 = GodZium.Theme.SECTION
 			Section.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Section.BorderSizePixel = 0
-			Section.Size = UDim2.new(NoHyper.SectionWidth, 0, 0, 33)
+			Section.Size = UDim2.new(GodZium.SectionWidth, 0, 0, 33)
 			Section.ZIndex = 5
 
 			UICorner.Parent = Section
@@ -804,7 +804,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 			Icon.Name = "Icon"
 			Icon.Parent = SectionTitle
 			Icon.AnchorPoint = Vector2.new(0.5, 0.5)
-			Icon.BackgroundColor3 = NoHyper.Theme.MAIN
+			Icon.BackgroundColor3 = GodZium.Theme.MAIN
 			Icon.BackgroundTransparency = 1.000
 			Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Icon.BorderSizePixel = 0
@@ -812,7 +812,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 			Icon.Size = UDim2.new(0.649999976, 0, 0.649999976, 0)
 			Icon.SizeConstraint = Enum.SizeConstraint.RelativeYY
 			Icon.ZIndex = 8
-			Icon.ImageColor3 = NoHyper.Theme.MAIN
+			Icon.ImageColor3 = GodZium.Theme.MAIN
 			SetImage(SectionIcon,Icon)
 
 			UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(214, 214, 214)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
@@ -867,7 +867,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 			UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 			UIListLayout.Padding = UDim.new(0, 3)
 
-			UIStroke.Color = NoHyper.Theme.STROKE
+			UIStroke.Color = GodZium.Theme.STROKE
 			UIStroke.Parent = Section
 
 			function Section_Hyper.update()
@@ -879,10 +879,10 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 					end
 				end
 
-				Tween:Create(Section,TweenInfo.new(0.1),{Size = UDim2.new(NoHyper.SectionWidth,0,0,old + 1)}):Play()
+				Tween:Create(Section,TweenInfo.new(0.1),{Size = UDim2.new(GodZium.SectionWidth,0,0,old + 1)}):Play()
 			end
 
-			table.insert(NoHyper.AutoUpdate,Section_Hyper.update)
+			table.insert(GodZium.AutoUpdate,Section_Hyper.update)
 
 			function Section_Hyper.text(...)
 				TextLabel.Text = tostring(...)
@@ -927,7 +927,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 
 				Frame.Parent = Button
 				Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-				Frame.BackgroundColor3 = NoHyper.Theme.BACKGROUND
+				Frame.BackgroundColor3 = GodZium.Theme.BACKGROUND
 				Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Frame.BorderSizePixel = 0
 				Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -935,19 +935,19 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Frame.ZIndex = 10
 
 				Button_2.MouseEnter:Connect(function()
-					Tween:Create(Frame,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.TOUCH}):Play()
+					Tween:Create(Frame,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.TOUCH}):Play()
 				end)
 
 				Button_2.MouseButton1Down:Connect(function()
-					Tween:Create(Frame,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.SYSTEM}):Play()
+					Tween:Create(Frame,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.SYSTEM}):Play()
 				end)
 
 				Button_2.MouseButton1Up:Connect(function()
-					Tween:Create(Frame,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+					Tween:Create(Frame,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.BACKGROUND}):Play()
 				end)
 
 				Button_2.MouseLeave:Connect(function()
-					Tween:Create(Frame,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+					Tween:Create(Frame,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.BACKGROUND}):Play()
 				end)
 
 				UICorner.CornerRadius = UDim.new(0, 4)
@@ -1042,7 +1042,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Ui.Name = "Ui"
 				Ui.Parent = Toggle
 				Ui.AnchorPoint = Vector2.new(1, 0.5)
-				Ui.BackgroundColor3 = NoHyper.Theme.BACKGROUND
+				Ui.BackgroundColor3 = GodZium.Theme.BACKGROUND
 				Ui.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Ui.BorderSizePixel = 0
 				Ui.Position = UDim2.new(0.950000107, 0, 0.500000417, 0)
@@ -1085,7 +1085,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 						return
 					end
 
-					Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.TOUCH}):Play()
+					Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.TOUCH}):Play()
 				end)
 
 				Button.MouseLeave:Connect(function()
@@ -1093,16 +1093,16 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 						return
 					end
 
-					Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+					Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.BACKGROUND}):Play()
 				end)
 
 				local function Effect(vcal)
 					if vcal then
-						Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.SYSTEM}):Play()
+						Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.SYSTEM}):Play()
 						True.Visible = true
 					else
 						True.Visible = false
-						Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+						Tween:Create(Ui,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.BACKGROUND}):Play()
 					end
 				end
 
@@ -1203,7 +1203,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Bind.Name = "Bind"
 				Bind.Parent = Keybind
 				Bind.AnchorPoint = Vector2.new(1, 0.5)
-				Bind.BackgroundColor3 = NoHyper.Theme.BACKGROUND
+				Bind.BackgroundColor3 = GodZium.Theme.BACKGROUND
 				Bind.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Bind.BorderSizePixel = 0
 				Bind.Position = UDim2.new(0.950000226, 0, 0.500000417, 0)
@@ -1250,14 +1250,14 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 					if BindConnect then
 						return
 					end
-					Tween:Create(Bind,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.TOUCH}):Play()
+					Tween:Create(Bind,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.TOUCH}):Play()
 				end)
 
 				Button.MouseLeave:Connect(function()
 					if BindConnect then
 						return
 					end
-					Tween:Create(Bind,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+					Tween:Create(Bind,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.BACKGROUND}):Play()
 				end)
 
 				local function UpdateText()
@@ -1275,7 +1275,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 
 					BindKey.Text = '...'
 					UpdateText()
-					Tween:Create(Bind,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.SYSTEM}):Play()
+					Tween:Create(Bind,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.SYSTEM}):Play()
 					BindConnect = 'wait'
 					BindConnect = UIS.InputBegan:Wait()
 
@@ -1290,7 +1290,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 						UpdateText()
 					end
 
-					Tween:Create(Bind,TweenInfo.new(0.075),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+					Tween:Create(Bind,TweenInfo.new(0.075),{BackgroundColor3 = GodZium.Theme.BACKGROUND}):Play()
 
 
 					UpdateText()
@@ -1391,7 +1391,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Ui.Name = "Ui"
 				Ui.Parent = Slider
 				Ui.AnchorPoint = Vector2.new(1, 0.5)
-				Ui.BackgroundColor3 = NoHyper.Theme.BACKGROUND
+				Ui.BackgroundColor3 = GodZium.Theme.BACKGROUND
 				Ui.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Ui.BorderSizePixel = 0
 				Ui.Position = UDim2.new(0.949999869, 0, 0.500000417, 0)
@@ -1404,7 +1404,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 
 				SLIDE.Name = "SLIDE"
 				SLIDE.Parent = Ui
-				SLIDE.BackgroundColor3 = NoHyper.Theme.MAIN
+				SLIDE.BackgroundColor3 = GodZium.Theme.MAIN
 				SLIDE.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				SLIDE.BorderSizePixel = 0
 				SLIDE.Size = UDim2.new(0.462937713, 0, 1, 0)
@@ -1415,7 +1415,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 
 				Frame.Parent = SLIDE
 				Frame.AnchorPoint = Vector2.new(1, 0)
-				Frame.BackgroundColor3 = NoHyper.Theme.MAIN
+				Frame.BackgroundColor3 = GodZium.Theme.MAIN
 				Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Frame.BorderSizePixel = 0
 				Frame.Position = UDim2.new(1.075, 0, 0, 0)
@@ -1427,7 +1427,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				UICorner_3.Parent = Frame
 
 				UIStroke.Thickness = 2.000
-				UIStroke.Color = NoHyper.Theme.STROKE
+				UIStroke.Color = GodZium.Theme.STROKE
 				UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				UIStroke.Parent = Frame
 
@@ -1588,7 +1588,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Ui.Name = "Ui"
 				Ui.Parent = Dropdown
 				Ui.AnchorPoint = Vector2.new(1, 0.5)
-				Ui.BackgroundColor3 = NoHyper.Theme.BACKGROUND
+				Ui.BackgroundColor3 = GodZium.Theme.BACKGROUND
 				Ui.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Ui.BorderSizePixel = 0
 				Ui.ClipsDescendants = true
@@ -1660,7 +1660,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				Drop.Name = "Drop"
 				Drop.Parent = Dropdown
 				Drop.AnchorPoint = Vector2.new(1, 0)
-				Drop.BackgroundColor3 = NoHyper.Theme.BACKGROUND
+				Drop.BackgroundColor3 = GodZium.Theme.BACKGROUND
 				Drop.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Drop.BorderSizePixel = 0
 				Drop.ClipsDescendants = true
@@ -1673,7 +1673,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 				UICorner_3.CornerRadius = UDim.new(0, 4)
 				UICorner_3.Parent = Drop
 
-				UIStroke.Color = NoHyper.Theme.STROKE
+				UIStroke.Color = GodZium.Theme.STROKE
 				UIStroke.Parent = Drop
 
 				UIListLayout.Parent = Drop
@@ -1707,14 +1707,14 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 						Tween:Create(Drop,TweenInfo.new(0.15),{
 							Size = UDim2.new(0.446000069, 0, 0, valshopw() + 6),
 						}):Play()
-						Tween:Create(Ui,TweenInfo.new(0.4),{BackgroundColor3 = NoHyper.Theme.TOUCH}):Play()
+						Tween:Create(Ui,TweenInfo.new(0.4),{BackgroundColor3 = GodZium.Theme.TOUCH}):Play()
 					else
 						Iconcc.Image = DOPWN
 						Tween:Create(Drop,TweenInfo.new(0.15),{
 							Size = UDim2.new(0.446000069, 0, 0, 15),
 						}):Play()
 
-						Tween:Create(Ui,TweenInfo.new(0.4),{BackgroundColor3 = NoHyper.Theme.BACKGROUND}):Play()
+						Tween:Create(Ui,TweenInfo.new(0.4),{BackgroundColor3 = GodZium.Theme.BACKGROUND}):Play()
 					end
 				end
 
@@ -1748,7 +1748,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 
 					Frame.Parent = Button
 					Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-					Frame.BackgroundColor3 = NoHyper.Theme.SYSTEM
+					Frame.BackgroundColor3 = GodZium.Theme.SYSTEM
 					Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 					Frame.BorderSizePixel = 0
 					Frame.Position = UDim2.new(1, 0, 0.5, 0)
@@ -1795,7 +1795,7 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 						end)
 
 						ubtton.MouseEnter:Connect(function()
-							Tween:Create(ubtton,TweenInfo.new(0.1),{TextColor3 = NoHyper.Theme.TOUCH}):Play()
+							Tween:Create(ubtton,TweenInfo.new(0.1),{TextColor3 = GodZium.Theme.TOUCH}):Play()
 						end)
 
 						ubtton.MouseLeave:Connect(function()
@@ -2124,15 +2124,15 @@ function NoHyper.new(WindowName,WindowLogo,WindowDescription)
 	return HyperWindow
 end
 
-function NoHyper:LoopUpdate()
+function GodZium:LoopUpdate()
 	task.spawn(function()
 		while true do task.wait()
 			pcall(function()
-				for i,v in ipairs(NoHyper.AutoUpdate) do task.wait()
+				for i,v in ipairs(GodZium.AutoUpdate) do task.wait()
 					pcall(v)
 				end
 			end)
 		end
 	end)
 end
-return NoHyper;
+return GodZium;
