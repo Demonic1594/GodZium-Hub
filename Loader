@@ -1,4 +1,4 @@
-local GodZium = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib'))()
+local GodZium = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib1'))()
 
 GodZium.set_theme('godzium')
 
