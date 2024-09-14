@@ -1,0 +1,79 @@
+local GodZium = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib'))()
+
+GodZium.set_theme('godzium')
+
+local Window = GodZium.new('Godzium', "rbxassetid://16763260622", 'Test script for sharkbite 2 >Boats<. Make sure to spam click the button for it to work.')
+
+local BoatTab = Window:NewTab('Main', 'earth')
+
+local BoatSection = BoatTab:NewSection('Boats', 'ads', 'left')
+
+local selectedBoat = 'Wildfire'
+
+BoatSection:AddButton('Confirm Boat Selection', function()
+    if selectedBoat then
+        pcall(function()
+             game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
+            
+            spawn(function()
+                for i = 1, 4 do
+                    wait(1)
+                    pcall(function()
+                        game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
+                    end)
+                end
+            end)
+        end)
+    else
+        print('No boat selected!')
+    end
+end)
+
+BoatSection:AddDropdown('Select Boat (Part 1)', {
+    'DuckyBoatBeta', 'DuckyBoat', 'BlueCanopyMotorboat', 'BlueWoodenMotorboat', 'UnicornBoat',
+    'Jetski', 'RedMarlin', 'Sloop', 'TugBoat', 'SmallDinghyMotorboat', 'JetskiDonut'
+}, 'Choose Boat', function(Value)
+    selectedBoat = Value
+    if Value then
+         BoatSection:SetDropdown('Select Boat (Part 2)', nil)
+        BoatSection:SetDropdown('Select Boat (Part 3)', nil)
+    end
+end)
+
+BoatSection:AddDropdown('Select Boat (Part 2)', {
+    'Marlin', 'TubeBoat', 'FishingBoat', 'VikingShip', 'SmallWoodenSailboat',
+    'RedCanopyMotorboat', 'Catamaran', 'CombatBoat', 'TourBoat', 'Duckmarine'
+}, 'Choose Boat', function(Value)
+    selectedBoat = Value
+    if Value then
+         BoatSection:SetDropdown('Select Boat (Part 1)', nil)
+        BoatSection:SetDropdown('Select Boat (Part 3)', nil)
+    end
+end)
+
+BoatSection:AddDropdown('Select Boat (Part 3)', {
+    'PartyBoat', 'MilitarySubmarine', 'GingerbreadSteamBoat', 'Sleigh2022', 'Snowmobile',
+    'CruiseShip', 'Wildfire', 'Titanic', 'StealthBoat', 'UFO', 'Pyro Tank(not working)'
+}, 'Choose Boat', function(Value)
+    selectedBoat = Value
+    if Value then
+         BoatSection:SetDropdown('Select Boat (Part 1)', nil)
+        BoatSection:SetDropdown('Select Boat (Part 2)', nil)
+    end
+end)
+
+local function selectBoat()
+    spawn(function()
+        pcall(function()
+            game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
+            
+            for i = 1, 4 do
+                wait(1)
+                pcall(function()
+                    game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
+                end)
+            end
+        end)
+    end)
+end
+selectBoat()
