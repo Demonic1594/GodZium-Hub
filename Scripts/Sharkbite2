@@ -1,16 +1,31 @@
-local GodZium = loadstring(game:HttpGet('https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib1'))()
-GodZium.set_theme('godzium')
-local Window = GodZium.new('Godzium', "rbxassetid://16763260622", 'Test script for sharkbite 2 >Boats<. Make sure to spam click the button for it to work.')
+local GodZium = loadstring(game:HttpGet("https://raw.githubusercontent.com/Demonic1594/GodZium-Hub/main/GodZiumLib2"))()
 
-local BoatTab = Window:NewTab('Main', 'earth')
-local BoatSection = BoatTab:NewSection('Boats', 'ads', 'left')
+GodZium:Theme("dark")
+local Window = GodZium:AddWindow("GodZium Hub", "Currently Work In Progress, Expect Bugs!")
+
+local Notification = GodZium:Notification()
+Notification.MaxNotifications = 6
+
+Window:AddTabLabel('Sharkbite 2 Script')
+local BoatTab = Window:AddTab('Boats', 'earth')
+local PlayerTab = Window:AddTab('Player', 'user')
+local ESPTab = Window:AddTab('ESP', 'ads')
+local BoatSectionI = BoatTab:AddSection('Boats Selection I', 'left')
+local BoatSectionII = BoatTab:AddSection('Boats Selection II', 'right')
+local BAttribute = BoatTab:AddSection('Boat Speed', 'left')
+local PAttribute = PlayerTab:AddSection('Player Attributes', 'left')
+local PEssentials = PlayerTab:AddSection('Essentials', 'right')
+local PlayerESP = ESPTab:AddSection('Player ESP', 'left')
+local SharkESP = ESPTab:AddSection('Shark ESP', 'right')
+
+-- Boats Tab
 
 local selectedBoat = 'Wildfire'
 
 local function selectBoat()
     if selectedBoat then
         local success, err = pcall(function()
-            for i = 1, 4 do
+            for i = 1, 5 do
                 game:GetService("ReplicatedStorage").EventsFolder.BoatSelection.UpdateHostBoat:FireServer(selectedBoat)
                 wait(1)
             end
@@ -23,39 +38,354 @@ local function selectBoat()
     end
 end
 
-BoatSection:AddButton('Confirm Boat Selection', selectBoat)
+BoatSectionI:AddButton('Confirm Boat Selection', selectBoat)
 
-BoatSection:AddDropdown('Select Boat (Part 1)', {
+BoatSectionI:AddDropdown('Select Boat (1)', {
     'DuckyBoatBeta', 'DuckyBoat', 'BlueCanopyMotorboat', 'BlueWoodenMotorboat', 'UnicornBoat',
-    'Jetski', 'RedMarlin', 'Sloop', 'TugBoat', 'SmallDinghyMotorboat', 'JetskiDonut'
-}, 'Choose Boat', function(Value)
+    'Jetski', 'RedMarlin', 'Sloop', 'TugBoat'
+}, Select, function(Value)
     selectedBoat = Value
     if Value then
-        BoatSection:SetDropdown('Select Boat (Part 2)', nil)
-        BoatSection:SetDropdown('Select Boat (Part 3)', nil)
+        BoatSectionI:SetDropdown('Select Boat (2)', nil)
+        BoatSectionII:SetDropdown('Select Boat (3)', nil)
+        BoatSectionII:SetDropdown('Select Boat (4)', nil)
     end
 end)
 
-BoatSection:AddDropdown('Select Boat (Part 2)', {
-    'Marlin', 'TubeBoat', 'FishingBoat', 'VikingShip', 'SmallWoodenSailboat',
-    'RedCanopyMotorboat', 'Catamaran', 'CombatBoat', 'TourBoat', 'Duckmarine'
-}, 'Choose Boat', function(Value)
+BoatSectionI:AddDropdown('Select Boat (2)', {
+    'SmallDinghyMotorboat', 'JetskiDonut', 'Marlin', 'TubeBoat', 'FishingBoat', 'VikingShip',
+    'SmallWoodenSailboat', 'RedCanopyMotorboat'
+}, Select, function(Value)
     selectedBoat = Value
     if Value then
-        BoatSection:SetDropdown('Select Boat (Part 1)', nil)
-        BoatSection:SetDropdown('Select Boat (Part 3)', nil)
+        BoatSectionI:SetDropdown('Select Boat (1)', nil)
+        BoatSectionII:SetDropdown('Select Boat (3)', nil)
+        BoatSectionII:SetDropdown('Select Boat (4)', nil)
     end
 end)
 
-BoatSection:AddDropdown('Select Boat (Part 3)', {
-    'PartyBoat', 'MilitarySubmarine', 'GingerbreadSteamBoat', 'Sleigh2022', 'Snowmobile',
-    'CruiseShip', 'Wildfire', 'Titanic', 'StealthBoat', 'UFO', 'Pyro Tank(not working)'
-}, 'Choose Boat', function(Value)
+BoatSectionII:AddButton('Confirm Boat Selection', selectBoat)
+
+BoatSectionII:AddDropdown('Select Boat (3)', {
+    'Catamaran', 'CombatBoat', 'TourBoat', 'Duckmarine', 'PartyBoat', 'MilitarySubmarine',
+    'GingerbreadSteamBoat', 'Sleigh2022'
+}, Select, function(Value)
     selectedBoat = Value
     if Value then
-        BoatSection:SetDropdown('Select Boat (Part 1)', nil)
-        BoatSection:SetDropdown('Select Boat (Part 2)', nil)
+        BoatSectionI:SetDropdown('Select Boat (1)', nil)
+        BoatSectionI:SetDropdown('Select Boat (2)', nil)
+        BoatSectionII:SetDropdown('Select Boat (4)', nil)
     end
 end)
 
-selectBoat()
+BoatSectionII:AddDropdown('Select Boat (4)', {
+    'Snowmobile', 'CruiseShip', 'Wildfire', 'Titanic', 'StealthBoat', 'UFO', 'Pyro Tank(not working)'
+}, Select, function(Value)
+    selectedBoat = Value
+    if Value then
+        BoatSectionI:SetDropdown('Select Boat (1)', nil)
+        BoatSectionI:SetDropdown('Select Boat (2)', nil)
+        BoatSectionII:SetDropdown('Select Boat (3)', nil)
+    end
+end)
+
+spawn(function()
+    selectBoat()
+end)
+
+-- Player Tab
+
+local defaultWalkspeed = 16
+local defaultJumpPower = 50
+local isToggledOn = false
+local currentWalkspeed = 50
+local currentJumpPower = 50
+
+local function setWalkspeed(val)
+    local humanoid = game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+    if humanoid then
+        humanoid.WalkSpeed = val
+    end
+end
+
+local function setJumpPower(val)
+    local player = game.Players.LocalPlayer
+    local character = player.Character
+    local humanoid = character and character:FindFirstChild("Humanoid")
+    if humanoid then
+        if humanoid:FindFirstChild("JumpPower") then
+            humanoid.JumpPower = val
+        elseif humanoid:FindFirstChild("JumpHeight") then
+            humanoid.JumpHeight = val
+        else
+            local bodyVelocity = character:FindFirstChildOfClass("BodyVelocity") or Instance.new("BodyVelocity")
+            bodyVelocity.Parent = character
+            bodyVelocity.Velocity = Vector3.new(0, val, 0)
+        end
+    end
+end
+
+local function stopWalkspeedModification()
+    if _G.walkspeedThread then
+        _G.walkspeedThread = false
+    end
+end
+
+local function stopJumpPowerModification()
+    if _G.jumpPowerThread then
+        _G.jumpPowerThread = false
+    end
+end
+
+local function startWalkspeedModification()
+    stopWalkspeedModification()
+    _G.walkspeedThread = true
+    spawn(function()
+        while _G.walkspeedThread and isToggledOn do
+            setWalkspeed(currentWalkspeed)
+            wait(0.1)
+        end
+    end)
+end
+
+local function startJumpPowerModification()
+    stopJumpPowerModification()
+    _G.jumpPowerThread = true
+    spawn(function()
+        while _G.jumpPowerThread and isToggledOn do
+            setJumpPower(currentJumpPower)
+            wait(0.1)
+        end
+    end)
+end
+
+PAttribute:AddToggle('Toggle (OFF/ON)', false, function(val)
+    isToggledOn = val
+    if isToggledOn then
+        startWalkspeedModification()
+        startJumpPowerModification()
+    else
+        stopWalkspeedModification()
+        stopJumpPowerModification()
+        setWalkspeed(defaultWalkspeed)
+        setJumpPower(defaultJumpPower)
+    end
+end)
+
+PAttribute:AddSlider('Walkspeed', 1, 500, 50, function(val)
+    currentWalkspeed = val
+    if isToggledOn then
+        startWalkspeedModification()
+    end
+end)
+
+PAttribute:AddSlider('Jump Power', 1, 500, 50, function(val)
+    currentJumpPower = val
+    if isToggledOn then
+        setJumpPower(val)
+    end
+end)
+
+-- ESP Tab
+
+local PlayerESPSettings = {
+    NameESP = false,
+    DistanceESP = false,
+    OutlineESP = false,
+    HighlightESP = false
+}
+
+local SharkESPSettings = {
+    NameESP = false,
+    DistanceESP = false,
+    OutlineESP = false,
+    HighlightESP = false
+}
+
+local function updateBillboardGui(player, distance)
+    local head = player.Character and player.Character:FindFirstChild("Head")
+    if not head then return end
+
+    local billboardGui = head:FindFirstChild("PlayerBillboardGui")
+    if not billboardGui then
+        billboardGui = Instance.new("BillboardGui")
+        billboardGui.Name = "PlayerBillboardGui"
+        billboardGui.Adornee = head
+        billboardGui.Size = UDim2.new(0, 200, 0, 100)
+        billboardGui.StudsOffset = Vector3.new(0, 2, 0)
+        billboardGui.AlwaysOnTop = true
+        billboardGui.LightInfluence = 0
+        billboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        billboardGui.Parent = head
+    end
+
+    local textLabel = billboardGui:FindFirstChild("PlayerNameLabel")
+    if not textLabel then
+        textLabel = Instance.new("TextLabel")
+        textLabel.Name = "PlayerNameLabel"
+        textLabel.Size = UDim2.new(1, 0, 1, 0)
+        textLabel.BackgroundTransparency = 1
+        textLabel.TextSize = 14
+        textLabel.Font = Enum.Font.GothamBold
+        textLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+        textLabel.TextStrokeTransparency = 0
+        textLabel.Parent = billboardGui
+    end
+
+    if PlayerESPSettings.NameESP or PlayerESPSettings.DistanceESP then
+        textLabel.Text = player.Name
+        if PlayerESPSettings.DistanceESP then
+            textLabel.Text = textLabel.Text .. " [" .. math.floor(distance) .. "]"
+        end
+    else
+        billboardGui:Destroy()
+    end
+
+    textLabel.TextColor3 = player.Team and player.Team.TeamColor.Color or Color3.new(1, 1, 1)
+end
+
+local function updateHighlightForPlayer(player)
+    if not player.Character or not player.Character:FindFirstChild("Head") then return end
+
+    local highlight = player.Character:FindFirstChildOfClass("Highlight")
+    if not highlight then
+        highlight = Instance.new("Highlight")
+        highlight.Parent = player.Character
+        highlight.Adornee = player.Character
+    end
+
+    if PlayerESPSettings.OutlineESP or PlayerESPSettings.HighlightESP then
+        highlight.FillColor = PlayerESPSettings.HighlightESP and (player.Team and player.Team.TeamColor.Color or Color3.new(1, 1, 1)) or Color3.new(1, 1, 1)
+        highlight.OutlineColor = PlayerESPSettings.OutlineESP and (player.Team and player.Team.TeamColor.Color or Color3.new(1, 1, 1)) or Color3.new(1, 1, 1)
+        highlight.FillTransparency = 0.5
+        highlight.OutlineTransparency = 0.1
+    else
+        highlight:Destroy()
+    end
+end
+
+local function updateSharkBillboardGui(sharkModel, distance)
+    local primaryPart = sharkModel.PrimaryPart
+    if not primaryPart then return end
+
+    local billboardGui = primaryPart:FindFirstChild("SharkBillboardGui")
+    if not billboardGui then
+        billboardGui = Instance.new("BillboardGui")
+        billboardGui.Name = "SharkBillboardGui"
+        billboardGui.Adornee = primaryPart
+        billboardGui.Size = UDim2.new(0, 200, 0, 100)
+        billboardGui.StudsOffset = Vector3.new(0, 5, 0)
+        billboardGui.AlwaysOnTop = true
+        billboardGui.LightInfluence = 0
+        billboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        billboardGui.Parent = primaryPart
+    end
+
+    local textLabel = billboardGui:FindFirstChild("SharkNameLabel")
+    if not textLabel then
+        textLabel = Instance.new("TextLabel")
+        textLabel.Name = "SharkNameLabel"
+        textLabel.Size = UDim2.new(1, 0, 1, 0)
+        textLabel.BackgroundTransparency = 1
+        textLabel.TextSize = 14
+        textLabel.Font = Enum.Font.GothamBold
+        textLabel.TextStrokeColor3 = Color3.new(0, 0, 0)
+        textLabel.TextStrokeTransparency = 0
+        textLabel.Parent = billboardGui
+    end
+
+    if SharkESPSettings.NameESP or SharkESPSettings.DistanceESP then
+        textLabel.Text = sharkModel.Name
+        if SharkESPSettings.DistanceESP then
+            textLabel.Text = textLabel.Text .. " [" .. math.floor(distance) .. "]"
+        end
+    else
+        billboardGui:Destroy() -- Remove the BillboardGui if both toggles are off
+    end
+
+    local playerOwner = sharkModel:FindFirstChild("playerowner")
+    local teamColor = Color3.new(1, 0, 0) -- Default to red if no team color available
+    if playerOwner and game.Players:FindFirstChild(playerOwner.Value) then
+        local player = game.Players[playerOwner.Value]
+        if player and player.Team then
+            teamColor = player.Team.TeamColor.Color
+        end
+    end
+
+    textLabel.TextColor3 = teamColor
+end
+
+local function updateHighlightForShark(sharkModel)
+    if not sharkModel.PrimaryPart then return end
+
+    local highlight = sharkModel:FindFirstChildOfClass("Highlight")
+    if not highlight then
+        highlight = Instance.new("Highlight")
+        highlight.Parent = sharkModel
+        highlight.Adornee = sharkModel
+    end
+
+    if SharkESPSettings.OutlineESP or SharkESPSettings.HighlightESP then
+        highlight.FillColor = SharkESPSettings.HighlightESP and Color3.new(1, 0, 0) or Color3.new(1, 1, 1)
+        highlight.OutlineColor = SharkESPSettings.OutlineESP and Color3.new(1, 0, 0) or Color3.new(1, 1, 1)
+        highlight.FillTransparency = 0.5
+        highlight.OutlineTransparency = 0.1
+    else
+        highlight:Destroy()
+    end
+end
+
+local function updatePlayerESP()
+    local localPlayer = game.Players.LocalPlayer
+    local localCharacter = localPlayer and localPlayer.Character
+    if not localCharacter then return end
+
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if player ~= localPlayer then
+            local distance = (localCharacter.Head.Position - player.Character.Head.Position).Magnitude
+            updateBillboardGui(player, distance)
+            updateHighlightForPlayer(player)
+        end
+    end
+
+    local sharksFolder = workspace:FindFirstChild("Sharks")
+    if sharksFolder then
+        for _, sharkModel in ipairs(sharksFolder:GetChildren()) do
+            if sharkModel:IsA("Model") and sharkModel:FindFirstChild("SharkMain") then
+                local distance = (localCharacter.Head.Position - sharkModel.PrimaryPart.Position).Magnitude
+                updateSharkBillboardGui(sharkModel, distance)
+                updateHighlightForShark(sharkModel)
+            end
+        end
+    end
+end
+
+PlayerESP:AddToggle('Name ESP', false, function(val)
+    PlayerESPSettings.NameESP = val
+end)
+PlayerESP:AddToggle('Distance ESP', false, function(val)
+    PlayerESPSettings.DistanceESP = val
+end)
+PlayerESP:AddToggle('Outline ESP', false, function(val)
+    PlayerESPSettings.OutlineESP = val
+end)
+PlayerESP:AddToggle('Highlight ESP', false, function(val)
+    PlayerESPSettings.HighlightESP = val
+end)
+
+SharkESP:AddToggle('Name ESP', false, function(val)
+    SharkESPSettings.NameESP = val
+end)
+SharkESP:AddToggle('Distance ESP', false, function(val)
+    SharkESPSettings.DistanceESP = val
+end)
+SharkESP:AddToggle('Outline ESP', false, function(val)
+    SharkESPSettings.OutlineESP = val
+end)
+SharkESP:AddToggle('Highlight ESP', false, function(val)
+    SharkESPSettings.HighlightESP = val
+end)
+
+game:GetService("RunService").Heartbeat:Connect(function()
+    updatePlayerESP()
+end)
