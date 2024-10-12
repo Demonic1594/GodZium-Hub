@@ -213,10 +213,10 @@ coroutine.wrap(pcall)(function()
             sethiddenproperty(workspace:FindFirstChildOfClass("Terrain"), "Decoration", false)
         else
             StarterGui:SetCore("SendNotification", {
-                Title = "discord.gg/rips",
+                Title = "GodZiumHub",
                 Text = "Your exploit does not support sethiddenproperty, please use a different exploit.",
                 Duration = 5,
-                Button1 = "Okay"
+                Button1 = "discord.gg/rips"
             })
             warn("Your exploit does not support sethiddenproperty, please use a different exploit.")
         end
