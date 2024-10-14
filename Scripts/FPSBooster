@@ -373,7 +373,7 @@ StarterGui:SetCore("SendNotification", {
     Duration = math.huge,
     Button1 = "discord.gg/rips"
 })
-warn("FPS Booster Loaded!")
+warn("[GZ] : FPS Booster loaded.")
 --game.DescendantAdded:Connect(CheckIfBad)
 --[[game.DescendantAdded:Connect(function(value)
     CheckIfBad(value)
